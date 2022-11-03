@@ -9,6 +9,7 @@
 #include <SSP_decimate.h>
 #include <single_collapse_data.h>
 #include <query_fine_to_coarse.h>
+#include <query_coarse_to_fine.h>
 
 // decimate the model with successive self-parameterization and compute the prolongation (aka interpolation) operator from V to Vf
 //
@@ -31,6 +32,16 @@ void get_prolong(
   Eigen::MatrixXd & V,
   Eigen::MatrixXi & F,
   Eigen::SparseMatrix<double> & P);
+
+void get_prolong_and_restriction(
+	const Eigen::MatrixXd & Vf,
+	const Eigen::MatrixXi & Ff,
+  const int & tarF,
+  const int & dec_type,
+  Eigen::MatrixXd & V,
+  Eigen::MatrixXi & F,
+  Eigen::SparseMatrix<double> & P,
+  Eigen::SparseMatrix<double> & S);
 
 // the same function as "get_prolong", but the output prolongation P is a 3#Vf by 3#V matrix
 
